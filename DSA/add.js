@@ -13,7 +13,8 @@
 
 let a = [1, 5, 3, "a", "b", null, 5, undefined, null];
 
-let result = a.filter((el) => el !== null && el !== undefined);
+// let result = a.filter((el) => el !== null && el !== undefined);
+let result = a.filter(Number);
 console.log(result);
 
 let array = [
