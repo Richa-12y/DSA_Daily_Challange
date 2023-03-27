@@ -22,7 +22,7 @@
 - 12.Given two arrays, write a program to merge them
 - 13.How would you empty an array in JavaScript?
 - 14.checked all value in two array are equall
-- 15. store all elmemt starting with  s in a seprate array  // a=['shirt', 'tshirt','shoes',book','mobile']    output=['shirt','shoes']
+- 15.store all elmemt starting with  s in a seprate array  // a=['shirt', 'tshirt','shoes',book','mobile']    output=['shirt','shoes']
 
  
 ### Contact
