@@ -20,3 +20,4 @@ function moveZeroes(params) {
   return [...nonZeroArray, ...zeroArray];
 }
 console.log(moveZeroes([0, 1, 0, 3, 12]));
+
