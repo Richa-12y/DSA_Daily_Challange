@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Prevent Overlap of Rectangles Along X-Axis</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body>
+    <svg id="chart"></svg>
+    <script>
+      // Define the width and height of the SVG
+      const svgWidth = 800;
+      const svgHeight = 400;
+
+      // Define the width of the rectangles and the margin between them
+      const rectWidth = 50;
+      const rectMargin = 5;
+
+      // Compute the number of rectangles that can fit in the SVG
+      const numRects = Math.floor(
+        (svgWidth - rectMargin) / (rectWidth + rectMargin)
+      );
+
+      // Define the data for the rectangles
+      const data = [
+        x: (rectWidth + rectMargin) * i + rectMargin,
+        y: svgHeight / 2,
+        width: rectWidth,
+        height: rectWidth,
+    ];
+
+      // Create the SVG element
+      const svg = d3
+        .select("#chart")
+        .attr("width", svgWidth)
+        .attr("height", svgHeight);
+
+      // Create the rectangles
+      const rects = svg
+        .selectAll("rect")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("x", (d) => d.x)
+        .attr("y", (d) => d.y)
+        .attr("width", (d) => d.width)
+        .attr("height", (d) => d.height)
+        .style("fill", "steelblue");
+
+      // Define the force layout
+      const simulation = d3
+        .forceSimulation(data)
+        .force(
+          "x",
+          d3.forceX().x((d) => d.x)
+        )
+        .force(
+          "y",
+          d3.forceY().y((d) => d.y)
+        )
+        .force(
+          "collision",
+          d3.forceCollide().radius((d) => d.width / 2)
+        )
+        .force("constrain", constrainXWidth(rectWidth, rectMargin, svgWidth));
+
+      // Define the tick function to update the positions of the rectangles
+      simulation.on("tick", () => {
+        rects.attr("x", (d) => d.x).attr("y", (d) => d.y);
+      });
+
+      // Define a custom constraint function to enforce the width constraint
+      function constrainXWidth(rectWidth, rectMargin, svgWidth) {
+        function strength(alpha) {
+          return alpha * 0.1;
+        }
+
+        function x(node) {
+          const left = node.x - rectWidth / 2;
+          const right = node.x + rectWidth / 2;
+          if (left < 0) return -left;
+          if (right > svgWidth) return svgWidth - right;
+          return 0;
+        }
+
+        return d3.force("constrainXWidth", strength).x(x);
+      }
+    </script>
+  </body>
+</html>
