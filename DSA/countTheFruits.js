@@ -1,34 +1,31 @@
-const fruits = [
-  { Apple: 4, Orange: 7, Grape: 3 },
-  { Guava: 6, Lemone: 4, Banana: 8 },
-  { Orange: 8, PineApple: 7, Apple: 7 },
-];
+// const fruits = [
+//   { Apple: 4, Orange: 7, Grape: 3 },
+//   { Guava: 6, Lemone: 4, Banana: 8 },
+//   { Orange: 8, PineApple: 7, Apple: 7 },
+// ];
+// let head = [1, 2, 2, 1];
 
-const countFrutes = {};
-
-// fruits.forEach((element) => {
-//   //   console.log(element);
-//   for (value in element) {
-//     // console.log(value);
-//     if (countFrutes[value]) {
-//       countFrutes[value] = countFrutes[value] + element[value];
-//     } else {
-//       countFrutes[value] = element[value];
+// function reverthearry(head) {
+//   let newresult = [...head].reverse();
+//   // console.log(head);
+//   // console.log(newresult);
+//   for (let i = 0; i < head.length; i++) {
+//     for (let j = 0; j < newresult.length; j++) {
+//       if (head[i] === newresult[j]) {
+//         return true;
+//       }
 //     }
 //   }
-// });
+// }
 
-// console.log(countFrutes);
-
-fruits.map((el) => {
-  //   console.log(el);
-  for (value in el) {
-    // console.log(value);
-    if (countFrutes[value]) {
-      countFrutes[value] = countFrutes[value] + el[value];
-    } else {
-      countFrutes[value] = el[value];
-    }
+// reverthearry(head);
+function muly(a, b) {
+  let ans = a;
+  // console.log(ans);
+  for (i = 0; i < b - 1; i++) {
+    ans = ans + a;
+    // console.log(ans);
   }
-});
-console.log(countFrutes);
+  return ans;
+}
+console.log(muly(5, 3));

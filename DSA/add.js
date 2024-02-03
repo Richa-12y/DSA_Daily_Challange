@@ -47,7 +47,7 @@ for (let i = 0; i < array.length; i++) {
 }
 console.log(frequency);
 
-let fgh = ["aghf", "kkj", "ll", 55, 55, 00, 11, 55];
+let fgh = ["aghf", "kkj", "ll", 55, 55, 11, 55];
 
 let gh = Array.from(new Set(fgh));
 console.log(gh);
